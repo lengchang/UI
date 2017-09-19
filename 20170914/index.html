@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>城市</title>
+		<script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
+	</head>
+	<body>
+		<select id="province">
+			<option value="0">========请选择省=========</option>
+		</select>
+		省
+		<select id="city">
+			<option value="0">========请选择市=========</option>
+		</select>
+		市
+		<select id="district">
+			<option value="0">========请选择区=========</option>
+		</select>
+		区
+		<script>
+			$(document).ready(function(){
+				var addressInfo=
+				[
+				{id:1,name:'北京省',city:[{id:11,name:'北京市',district:[{id:111,name:'朝阳区'},{id:112,name:'海淀区'}]}]},
+				{id:2,name:'天津省',city:[{id:21,name:'天津市',district:[{id:111,name:'西青区'},{id:112,name:'东青区'}]}]}
+				];
+			$.each(addressInfo,function(index,province){
+				$("#province").append("<option value='"+province.id+"'>"+province.name+"</option>")
+				
+			});
+			$("#province").change(function(){
+				var provinceIndex=$("#province :selected").val()-1;
+				console.log("1",""+provinceIndex);
+				var city=addressInfo[provinceIndex].city;
+				console.log("this",""+addressInfo[1].city[0].id);
+				$.each(city, function(index,aCity) {
+					$("#city").append("<option value='"+aCity.id+"'>"+aCity.name+"</option>")
+				});
+			});
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-3.2.1.js" ></script>
+	</head>
+	<body>
+		<div id="htmlTest">
+		<h2>html函数的实例</h2>
+		</div>
+		<div id="textTest">
+		<div>苹果</div>
+		<div>香蕉</div>
+		<div>鸭梨</div>
+		<div>车厘子</div>
+		<div>樱桃</div>
+		<div>菠萝</div>
+		</div>
+		<div id="appendTest">
+		<div>苹果</div>
+		<div>香蕉</div>
+		<div>鸭梨</div>
+		<div>车厘子</div>
+		<div>樱桃</div>
+		<div>菠萝</div>
+		</div>
+		<script>
+			$(document).ready(function(){
+				$("#htmlTest div").html(function(index,html){
+					//return index;
+					//index是序号，html是自带的值，return是最后显示的值
+					//return "("+(index+1)+")"+html;//若index没有和1括号在一起，就是字符串拼接，若果
+					//括号括在一起了，就是求和。
+					return "<input type='text' value='"+index+"'style='background-color:#9999EE;'/>"
+				}); 
+				$("#textTest div").text(function(index,html){
+					return "<input type='text' value='"+index+"'style='background-color:#9999EE;'/>"
+				}); 
+				
+				$("#appendTest div").append("123").css("background-color","#9999EE");//在元素的里面的后面追加
+				$("#appendTest div").prepend("345");//在元素的里面的前面加
+				$("#appendTest div").after("567")//在元素的外面的后面追加
+			
+
+			});
+			
+		</script>
+	</body>
+</html>

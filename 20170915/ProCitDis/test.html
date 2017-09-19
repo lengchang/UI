@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
+		<title>三级联动下拉框</title>
+	</head>
+	<body>
+		<select id="province"><option value="">-选择省-</option></select>
+		<select id="city"><option value="">-选择市-</option></select>
+		<select id="district"><option value="">-选择县/区-</option></select>
+		<script>
+			//json:javascript object node
+			$(document).ready(function(){
+				var addressInfo = {
+									result:true, 
+									data:[
+										{id:'0', name:'北京市', 
+										 city:[{id:'00', name:'北京市', district:[
+										 	{id:'000', name:'朝阳区'},
+										 	{id:'001', name:'海淀区'}
+										 ]}]},
+										{id:'1', name:'天津市',
+										 city:[{id:'10', name:'天津市', district:[
+										 	{id:'100', name:'和平区'},
+										 	{id:'101', name:'河西区'}
+										 ]}]}
+									]
+								  };
+				var provinces = addressInfo.data;
+				
+				var provinceSelecting;
+				var citySelecting;
+				
+				generateSelectOption("province", provinces);
+				
+				$("#province").change(function(){
+					var provinceId = $("#province :selected").val();
+					if(!provinceId){
+						removeAllCity();
+						removeAllDistrict();
+					}
+					
+					var provinceSelected = getProvinceById(provinceId);
+					provinceSelecting = provinceSelected;
+					
+					if(provinceSelected){
+						var citiesInfo = provinceSelected.city;
+						removeAllCity();
+						removeAllDistrict();
+						generateSelectOption("city", citiesInfo);
+					}
+				});
+				
+				$("#city").change(function(){
+					var cityId = $("#city :selected").val();
+					if(!cityId){
+						removeAllDistrict();
+					}
+					
+					var citySelected = getCityById(provinceSelecting, cityId);
+					if(citySelected){
+						var districtsInfo = citySelected.district;
+						removeAllDistrict();
+						generateSelectOption("district", districtsInfo);
+					}
+				});
+				
+				function removeAllCity(){
+					$(".cityAdded").remove();
+				}
+				function removeAllDistrict(){
+					$(".districtAdded").remove();
+				}
+				
+				function getProvinceById(id){
+					var result;
+					$.each(provinces, function(index, province){
+						if(id == province.id){
+							result = province;
+							return ;
+						}
+					});
+					
+					return result;
+				}
+				
+				function getCityById(province, cityId){
+					var result;
+					$.each(province.city, function(index, city){
+						if(cityId == city.id){
+							result = city;
+							return ;
+						}
+					});
+					
+					return result;
+				}
+				
+				function generateSelectOption(selectId, optionObjs){
+					$.each(optionObjs, function(index, optionObj){
+						$("#"+selectId).append("<option class='"+selectId+"Added' value='"+optionObj.id+"'>" + optionObj.name + "</option>");
+					});
+				}
+			});
+		</script>
+	</body>
+</html>

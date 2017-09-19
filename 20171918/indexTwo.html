@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script type="text/javascript" src="lib/jquery-3.2.1.min.js" ></script>
+		<script type="text/javascript" src="lib/jquery-ui-1.12.1/jquery-ui.min.js" ></script>
+		<link rel="stylesheet" href="lib/jquery-ui-1.12.1/jquery-ui.min.css" />
+		
+		<script>
+			
+		</script>
+	
+	</head>
+	<body>
+		<!--
+			
+			注意JQuery-ui的两个组件之间不可以重复渲染，不可重用
+			所有的JQuery-ui组件都有enablehe disable 属性
+		-->
+		<style>
+			.ui-slider{width: 600px;}
+		</style>
+		
+		<h2>Slide滑块组件</h2>
+		当前值为:<span id="amount"></span>
+		<div id="slider"></div>
+		
+		<script>
+			$(document).ready(function(){
+				var initNumber=306;
+				$("#slider").slider({
+					value:initNumber,//初始值
+					step:5,//每次滑动，最少五个数字，要求必须可以被范围整除
+					min:301,//一共有一百个数字可以滑动
+					max:400,
+					orientation:"horizontal",//水平 horizontal，垂直 
+					slide:function(){
+						var sliderValue=$("#slider").slider("value");
+						$("#amount").text(sliderValue);
+					},
+					start:function(){
+						
+					},
+					stop:function(){
+						
+					},
+					change:function(){
+						
+					}
+				});
+			});
+		</script>
+		
+		
+		
+		
+		
+		<hr />
+		<h2>Progressbar 进度条</h2>
+		<style>
+			.ui-progressbar{width: 600px;height: 30px;}
+			.ui-progressbar-value{background-color: #00EE00;}
+			#barText{float:left;width: 600px;height: 30px;text-align: center;line-height: 30px;/*浮动可以让元素不占位置，不把进度条挤开*/}
+		</style>
+		
+		<div id="bar"><div id="barText">0%</div></div>
+		
+		<script>
+			$(document).ready(function(){
+				$("#bar").progressbar({
+					value:0,
+				});
+				setTimeout(function(){
+							setProgressBar();
+						},100);
+						
+				function setProgressBar(){
+					var barValue=$("#bar").progressbar("value");//这里获取到的是数值时number类型的。
+					barValue+=1;
+					$("#bar").progressbar("value",barValue);
+					if(barValue<100)
+					{
+						$("#barText").text(barValue+"%");//text可以不需要判断HTML元素，比html（）效率高
+					}else
+					{
+						$("#barText").text("完成");
+					}
+					if(barValue<100)
+					{
+						setTimeout(function(){
+							setProgressBar();
+						},100);
+					}
+				}
+			});
+		</script>
+		
+		<hr />
+		<h2>Autocomplete自动完成组件</h2>
+		<input id="autoText" type="text" placeholder="请在这里输入编程语言的内容" />
+		<script>
+			$(document).ready(function(){
+				var languages=new Array("C","C++","C#","JAVA","JAVAScript","Visual BASIC","SQl","PHP","phython","天津工业大学","天津师范大学","天津理工大学");
+				$("#autoText").autocomplete({
+					delay:300,//输入多长时间后搜索，毫秒
+					minLength:2,//输入的最小长度
+					source:languages,
+					select:function(e,ui){//选中后触发
+						console.log(ui.item.value);
+					},
+					search:function(){//触发了搜索才会触发这个事件，方法。
+						console.log("您正在搜索！");
+					},
+				});
+			});
+		</script>
+		
+		
+		
+		
+		<hr />
+		
+		<h2>DatePicker 日期选择器组件</h2>
+		<input id="beginDate" type="text" />至<input id="endDate" type="text" />
+		<script>
+			$(document).ready(function(){
+				var monthName=["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"];
+				var weekName=["周日","周一","周二","周三","周四","周五","周六"];
+				$("#beginDate").datepicker({
+					autoSize:true,
+					changeMonth:true,//变为可选
+					changeYear:true,
+					monthNames:monthName,
+					monthNamesShort:monthName,
+					dayNamesMin:weekName,
+					dateFormat:"yy-mm-dd" ,
+				});
+				$("#endDate").datepicker({
+					autoSize:true,
+					changeMonth:true,//变为可选
+					changeYear:true,
+					monthNames:monthName,
+					monthNamesShort:monthName,
+					dayNamesMin:weekName,
+					yearRange:"c-10:c+10",//前后十年？需要将minDate和maxDate先屏蔽
+					dateFormat:"yy-mm-dd" ,//java 中写法是yyyy-MM-dd
+				//	minDate:"2017-09-11",//日期范围
+				//	maxDate:"2017-09-25",
+					
+				});
+				
+			});
+		</script>		
+		
+		
+		
+		<hr />
+		<h2>Dialog 对话框组件</h2>
+		<style>
+			#loginButton{width: 500px;margin: 0px auto;}
+			#loginArea tr td input{margin: 30px 10px;}
+			.alignRight{text-align: right;}
+			
+			.ui-dialog{}
+			.ui-dialog-titlebar/*对话框标题*/
+			.ui-dialog-title/*对话框标题文字的样式*/
+			.ui-dialog-content{}/*长和宽不能在这里定义，会和dialog方法中定义的冲突，所以在dialog方法中定义就行*/
+		</style>
+		<div id="dialogContainer">
+			<table id="loginArea">
+				<tr>
+					<td class="alignRight">
+						用户名:
+					</td>
+					<td><input id="userName" type="text" placeholder="请在这里输入用户名"/></td>
+				</tr>
+				<tr>
+					<td class="alignRight">
+						密码:
+					</td>
+					<td><input id="userPwd" type="text" placeholder="请在这里输入密码"/></td>
+				</tr>
+			</table>
+		</div>
+		<div id="loginButton"></div>
+		<script>
+			$(document).ready(function(){
+				$("#loginButton").button({text:true,label:"登录"});
+				$("#loginButton").click(function(){
+					$("#dialogContainer").dialog("open");
+				});
+				
+				$("#dialogContainer").dialog({
+					width:600,
+					height:400,
+					autoOpen:false,//自动不打开
+					title:"登录",
+					draggable:false,//是否可以拖拽
+					resizable:false,//是否可以伸缩
+					modal:false,//是否是一个模式 对话框，模式对话框就是这个对话框以外的所有内容都不能点击了，默认是false
+					buttons:{
+						"登录":function(){
+							var userName=$("#userName").val();
+							var userPwd=$("#userPwd").val();
+							if(!userName||!userPwd)
+							{
+								alert("至少一个为空，登录失败！");
+								return false;
+							}
+							//其他判断略
+							if(userName!="admin"||userPwd!="123")
+							{
+								alert("密码或者是账号不对！");
+								return false;
+							}
+						},
+						"关闭":function(){
+							if(confirm("确定要关闭吗"))
+							{
+								$("#dialogContainer").dialog("close");
+							}
+						}
+					},
+					open:function(){//打开时调用
+						console.log("打开对话框");
+					},
+					close:function(){//关闭后调用
+						console.log("关闭对话框");
+					},
+					beforeClose:function(){//在关闭前调用
+						return confirm("确定要关闭吗");
+					},
+					//focus,open,等等其他方法
+				});
+			});
+		</script>
+		
+		
+		
+		
+		
+		
+		
+		
+		<br />
+		<hr />
+		<style>
+			.ui-tabs{width: 800px;height: 600px;}
+			.ui-tabs-nav{}/*标题*/
+			.ui-tabs-panel{}/*面板*/
+		</style>
+		<h2>Tabs选项卡组件</h2>
+		<div id="tabsContainer">
+			<ul>
+				<li><a href="#page1">页面1</a></li>
+				<li><a href="#page2">页面2</a></li>
+				<li><a href="#page3">页面3</a></li>
+			</ul>
+			<div id="page1">
+				我是页面1
+			</div>
+			<div id="page2">
+				我是页面2<br />
+				<input type="text" />
+			</div>
+			<div id="page3">
+				我是页面3
+			</div>
+			<script>
+				$(document).ready(function(){
+					$("#tabsContainer").tabs({
+						collapsible:true,/*是否可以折叠*/
+						disabled:[2],/*禁止使用*/
+					});
+				});
+			</script>
+		</div>
+		
+		
+		
+		
+		
+		<hr />
+		<style>
+			.ui-accordion{width: 200px;}
+			.ui-accordion-header{}
+			.ui-accordion-content{}
+		</style>
+		<h2>Accordion折叠面板组件</h2>
+		<div id="accordionContainer">
+			<h3>库存管理</h3><!--标题必须用h元素来写-->
+			<div>
+				库存管理部分
+			</div>
+			<h3>财务管理</h3>
+			<div>
+				财务管理部分
+			</div>
+		</div>
+		<script>
+			$(document).ready(function(){
+				$("#accordionContainer").accordion({
+					collapsible:true//使得下拉列可以折回去1
+				});
+			});
+		</script>
+		
+		
+		
+		
+		
+		
+		
+		
+		<hr />
+		<h2>Button按钮组件</h2>
+		<style>
+		/*.ui-button{font-weight: 900;/*修改字体 取值范围100到900}*/
+		 /*.ui-button-text{font-weight: 900;}*/
+		</style>
+		<div id="controlButton"></div>
+		
+		<script>
+			$(document).ready(function(){
+				var isPlaying=false;
+				$("#controlButton").button({/*按钮组件将div变成按钮类型*/
+					/*text:是否显示文字的意思,false的时候不显示文字，但是要求必须有图标*/
+					text:false,
+					icons:{primary:"ui-icon-play"},
+					label:"开始1	",
+				});
+				$("#controlButton").click(function(){
+					if(isPlaying)
+					{
+						$("#controlButton").button({
+							lable:"开始",
+							icons:{primary:"ui-icon-play"}
+						});
+						$("#controlButton").attr("title","开始");
+					}
+					else{
+						$("#controlButton").button({
+							lable:"暂停",
+							icons:{primary:"ui-icon-pause"}
+						});
+						$("#controlButton").attr("title","暂停");/*设置值*/
+					}
+					isPlaying=!isPlaying
+				});
+			});
+		</script>
+		
+		
+		
+		
+		
+		<hr />
+		<style>
+			#sortableContainer{width: 200px;}
+			#sortableContainer div{background-color: blueviolet; width: 200px;height: 50px; margin: 10px 0px;border-radius: 5px; text-align: center;line-height: 50px;}
+		</style>
+		
+		<h2>排序组件 Sortable</h2>
+		<input type="button" value="重置" onclick="$('#sortableContainer').cancel()" />
+		<div id="sortableContainer">
+			<div class="sortableClass"> C语言</div>
+			<div class="sortableClass">JAVA</div>
+			<div class="sortableClass">汇编语言</div>
+			<div>C#</div>
+			<div>SQl</div>
+		</div>
+		
+		<script>
+			$(document).ready(function(){
+				$("#sortableContainer").sortable({
+					cursor:"move",/*图标*/
+					containment:"#sortableContainer",
+					items:".sortableClass",/*可以排序的*/
+					/*cancel:".sortableClass" 不可以排序的*/
+					start:function(e,ui){
+						console.log(ui.item.html());
+					},
+					change:function(e,ui)
+					{
+						console.log("组件顺序正在发生改变："+ui.item.html());
+					},
+					stop:function(){
+						/*结束*/
+					},
+					update:function(){
+						/*组件结束后有发生移动*/
+					}
+					
+				});
+			});
+		</script>
+		
+		<hr />
+		<style>
+			#resizable{width: 100px; height: 100px; background-color: blue;}
+		</style>
+		<input type="button" value="停用" onclick="$('#resizable').resizable('disable')" />
+		<input type="button" value="启用" onclick="$('#resizable').resizable('enable')" />
+		
+		<h2>缩放组件   resizable</h2>
+		<div id="resizable"></div>
+		<script>
+			$(document).ready(function(){
+				$("#resizable").resizable(
+					{
+						maxWidth:200,maxHeight:200,/*这里要求的数字，不需要写成像素，不能写px*/
+						minWidth:50,minHeight:50,
+						
+					}
+				);
+			});
+		</script>
+		<h2>选择组件  selectable</h2>
+		<style>
+			.ui-selectee{background-color: red; width: 200px;height: 50px; margin: 10px 0px;border-radius: 5px; text-align: center;line-height: 50px;/*未选中*/}
+			.ui-selecting{background-color: #66EE66;/*点击不放开时*/}
+			.ui-selected{background-color: #00EE00;/*选中*/}
+		</style>
+		<div id="container">
+			<div> C语言</div>
+			<div>JAVA</div>
+			<div>汇编语言</div>
+			<div>C#</div>
+			<div>SQl</div>
+			<a href="#">123</a>
+		</div>
+		<script>
+			$(document).ready(function(){
+				$("#container").selectable(
+					{
+						filter:"div", /*只应用于*/
+						selecting:function()
+						{
+							console.log("正在点击选项1");
+						},
+					/*	start:function(){
+							console.log("正在点击选项2")
+						}*/
+						selected:function(){
+							console.log("您已经选中了一个选项");
+						},
+						unselected:function(){
+							console.log("您已经取消了一个选项");
+						},
+						unselecting:function(){
+							console.log("您正在取消了一个选项");
+						}
+					}
+				);
+			});
+		</script>
+	</body>
+</html>

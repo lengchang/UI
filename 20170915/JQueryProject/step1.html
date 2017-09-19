@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<script type="text/javascript" src="lib/jquery-3.2.1.min.js" ></script>
+		<script type="text/javascript" src="lib/jquery-ui-1.12.1/jquery-ui.min.js" ></script>
+		<link rel="stylesheet" href="lib/jquery-ui-1.12.1/jquery-ui.min.css" />
+		<link rel="stylesheet" href="css/step1.css" />
+		<title>学生课程选择系统，第一步，信息填写</title>
+	</head>
+	<body>
+		<script>
+			$(document).ready(function(){
+				$("#stepTag tr td:lt(2)").css("border-right","solid 0px #000000");
+				$("#stepTag tr td").click(function(){
+					$("#stepTag tr td").css("background-color","#E9E9E9");
+					$(this).css("background-color","#AAAAAA");
+				});
+				$("#next1").click(function(){
+					$("#step1").animate({left:"-600px"},2000);
+					$("#step2").animate({left:"0px"},2000);
+					$("#step3").animate({left:"600px"},2000);
+				});
+				$("#next2").click(function(){
+					console.log(1);
+					$("#step2").animate({left:"-600px"},2000);
+					$("#step3").animate({left:"0px"},2000);
+				});
+				$("#last1").click(function(){
+					$("#step1").animate({left:"0px"},2000);
+					$("#step2").animate({left:"600px"},2000);
+					$("#step3").animate({left:"1200px"},2000);
+				});
+				$("#last2").click(function(){
+					$("#step1").animate({left:"-600px"},2000);
+					$("#step2").animate({left:"0px"},2000);
+					$("#step3").animate({left:"600px"},2000);
+				});
+			});
+			
+		</script>
+		<div id="stepTagArea">
+			<table id="stepTag">
+				<tr>
+				<td>基本信息</td>
+				<td>方向选择</td>
+				<td>科目选择</td>
+				</tr>
+			</table>
+		</div>
+		<div id="mainContent">
+			<div id="step1" class="step">
+				第一个标签<br >
+				<div id="value1">
+				学号:<input type="text"  /><br />
+				姓名:<input  type="text"/><br />
+				专业:<select>
+					<option>==请选择==</option>
+					<option>软件工程</option>
+					<option>计算机</option>
+					<option>新媒体</option>
+				</select>
+				</div>
+				<div id="value2">
+				<input type="button" value="上一步" class="previous myButton" /><br />
+				<input id="next1" type="button" value="下一步" class="next myButton"/>
+				</div>
+			</div>
+			<div id="step2" class="step">
+				第二个标签<br >
+				<input id="last1" type="button" value="上一步" class="previous myButton" /><br />
+				<input id="next2" type="button" value="下一步" class="next myButton"/>
+			</div>
+			<div id="step3" class="step">
+				第三个标签<br >
+				<input id="last2" type="button" value="上一步" class="previous myButton" /><br />
+				<input type="button" value="下一步" class="next myButton"/>
+			</div>
+			
+		</div>
+	</body>
+</html>

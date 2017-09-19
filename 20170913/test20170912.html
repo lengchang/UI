@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<script type="text/javascript" src="js/jquery-3.2.1.js" ></script>
+		<title>用户信息保存</title>
+		<style>
+			#mainTable{width:80%; margin:0px auto;}
+			.myButton{width:50px; height:30px; background-color:#EE00EE; color:#FFFFFF; text-align:center; line-height:30px; border-radius:10px; cursor:pointer;}
+			.myButtonDiabled{width:50px; height:30px; background-color:#DDDDDD; color:#000000; text-align:center; line-height:30px; border-radius:10px; cursor:pointer;}
+			.marginLeft10{margin-left:10px;}
+			.marginLeft50{margin-left:50px;}
+			#email{width:101px;}
+			#education{width:173px;}
+			.red{color:#FF0000;}
+			.warningSpan{background-color:#EE00EE; color:#FFFFFF;}
+		</style>
+	</head>
+	<body>
+		<form id="myForm">
+			<table id="mainTable" cellpadding="10px">
+				<tr>
+					<td width="40%"><span class="red">*</span>用户名：</td>
+					<td width="60%"><input id="userName" class="notNull" type="text" placeholder="请输入用户名"/></td>
+				</tr>
+				<tr>
+					<td><span class="red">*</span>密码：</td>
+					<td><input id="userPsw" class="notNull" type="password" placeholder="请输入密码"/></td>
+				</tr>
+				<tr>
+					<td><span class="red">*</span>重复密码：</td>
+					<td><input id="userPswRepeat" class="notNull" type="password" placeholder="请再次输入密码"/></td>
+				</tr>
+				<tr>
+					<td><span class="red">*</span>性别：</td>
+					<td><input id="gender" type="radio" name="gender" value="1"/>男<input type="radio" name="gender" value="0" class="marginLeft50"/>女</td>
+				</tr>
+				<tr>
+					<td>年龄：</td>
+					<td><input type="text" placeholder="请输入年龄"/></td>
+				</tr>
+				<tr>
+					<td>出生日期：</td>
+					<td><input type="text" placeholder="请输入出生日期"/></td>
+				</tr>
+				<tr>
+					<td>电子邮箱：</td>
+					<td>
+						<input id="email" class="emailValidate" type="text" placeholder="请输入您的邮箱"/>@
+						<select>
+							<option value="163">163</option>
+							<option value="126">126</option>
+							<option value="qq">qq</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td><span class="red">*</span>学历：</td>
+					<td>
+						<select id="education" class="notNull">
+							<option value="">===请选择学历===</option>
+							<option value="1">研究生</option>
+							<option value="2">本科</option>
+							<option value="3">专科</option>
+							<option value="4">高中及以下</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>（最多两个）兴趣爱好：</td>
+					<td>
+						<input type="checkbox" value="1"/>书法
+						<input type="checkbox" value="2"/>绘画
+						<input type="checkbox" value="3"/>篮球
+						<input type="checkbox" value="4"/>游戏
+					</td>
+				</tr>
+				<tr>
+					<td><input id="savButton" type="button" value="保存" class="myButton"/></td>
+					<!-- type='sumbit'这样的元素具有副作用，即自动提交，我们在做开发的时候，应尽量减少副作用代码 -->
+					<td><input type="button" value="重置" class="myButton"/></td>
+				</tr>
+			</table>
+		</form>
+		<script>
+			$(document).ready(function(){
+				$("#mainTable tr").each(function(){
+					$(this).children().first().css("text-align", "right");
+				});
+				
+				$("#mainTable input").blur(function(){
+					formValidate();
+				});
+				
+				$(".emailValidate").blur(function(){
+					//验证邮箱
+					var emailValue = $("#email").val();
+					if(!emailValue)
+					{
+						
+					}
+					else
+					{
+						if(!/^[0-9a-zA-Z]+$/.test(emailValue))
+						{
+							$("#email").parent().append("<span class='warningSpan marginLeft10'>邮箱格式不合法！</span>");
+						}
+					}
+				});
+				
+				//表单验证
+				$("#savButton").click(function(){
+					formValidate();
+				});
+				
+				function formValidate(){
+					var isSuccess = true;
+					
+					$(".warningSpan").remove();
+					//首先验证非空
+					$(".notNull").each(function(){
+						var elementValue = $(this).val();
+						if(!elementValue)
+						{
+							$(this).parent().append("<span class='warningSpan marginLeft10'>内容不能为空</span>");
+							disableSubmit();
+							isSuccess = false;
+						}
+					});
+					
+					if(isSuccess)
+					{
+						enableSubmit();
+					}
+					else
+					{
+						disableSubmit();
+					}
+				}
+				
+				function disableSubmit()
+				{
+					$("#savButton").removeClass("myButton").addClass("myButtonDiabled");
+				}
+				function enableSubmit()
+				{
+					$("#savButton").removeClass("myButtonDiabled").addClass("myButton");
+				}
+			});
+		</script>
+	</body>
+</html>
+<!-- 一般来讲元素的属性，id放在最前面，class是第二个 -->

@@ -1,0 +1,16 @@
+#stepTagArea{height: 45px;}
+#stepTag tr td{float: left;list-style: none;background-color: #CCCCCC;padding: 10px;border: solid 3px #000000;}
+#stepTag tr td:hover{background-color: #CCCCCC;color: #FFFFFF;}
+
+#mainContent{width: 600px;height: 400px;border: solid 4px #000000;overflow-x:hidden}
+.step{width:600px;height: 400px; position: relative;}
+#step1{position:relative; bottom: 0px;left: 0px; background-color: aquamarine;}
+#step2{position: relative;bottom: 400px;left: 600px;}
+#step3{position: relative;bottom: 800px;left: 1200px;}/*显示的位置，距离自己的真实的位置的   距离*/
+
+.previous{position: relative;top: 310px;left: 30px;}
+.next{position: relative;top: 270px;left: 505px;}
+.myButton{width: 60px;height: 40px;border-radius: 5px;background-color: cornsilk;cursor: pointer;}
+
+#value1{width: 100%; border: solid 1px #2B2B2B;background-color: red;}
+#value2{position: relative;top: -65px;}
