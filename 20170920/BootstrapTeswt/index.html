@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Bootstrap自定义的基础样式</title>
+		<script type="text/javascript" src="lib/jquery-3.2.1.min.js" ></script>
+		<script type="text/javascript" src="lib/bootstrap-3.3.7-dist/js/bootstrap.min.js" ></script>
+		<link rel="stylesheet" href="lib/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+	</head>
+	<body>
+		<!--
+        	作者：offline
+        	时间：2017-09-20
+        	描述
+        	1.Bootstrap会自动的改变一些html的样式
+        	2.Bootstrap现阶段的作用，利用class 改变一个标签的样式,开发更加方便了，比如说一行上放入两个不同的h1h2h3等
+        	3.JQuery是一切的基础
+        	4.什么是响应式元素？宽度随着浏览器的宽度变化时的元素就是响应式的元素  -responsive
+        		 
+        	
+        -->
+        <h2>必须会的</h2>
+        <ol>
+        	<li>*布局:栅格化*</li>
+        	<li>表单元素样式</li>
+        	<li>常用元素的美化(p ,a,span,div img)</li>
+			<li>表格元素</li>
+        </ol>
+        
+        
+        
+        
+        <hr />
+        <h2>其他的零碎样式</h2>
+        <h4><u>关闭按钮</u></h4>
+        <button class="close">关闭</button>
+        <h4><u>三角符号</u></h4>
+         <span class="caret"></span>
+        <h4><u>让一个块状元素居中,必须给这个元素配置 宽度</u></h4>
+        <div style="width: 100px; height: 100px; background-color: #3C763D;" class="center-block"></div>
+        <h4><u>清除浮动</u></h4>
+                      使用<code>class="clearfix"</code>
+        <h4><u>显示和隐藏</u></h4>
+        <span class="show">显示</span>
+        <span class="hidden">隐藏</span>
+        
+        
+        
+        <hr />
+        <h2>bootstrap图标</h2>
+        <span class="glyphicon-apple">这里有图标，bootstrap的图标是由Glyphicon Halflings编写的，这套图标是收费的，但是只对bootstrap免费</span>
+        
+        
+        
+        <hr />
+        <h2>响应式元素</h2>
+        <div class="row">
+        	<div class="col-xs-1 col-sm-8 col-md-4 col-lg-11">左边</div>
+        	<div class="col-xs-11 col-sm-4 clo-md-8 col-lg-1">右边</div>
+        </div>
+        
+        
+        
+        
+        
+        
+        <hr />
+        <h2>表格样式</h2>
+        <!--隔行变色  table-striped
+        	表格紧凑  table-condensed
+        	表格移动到上面的时候变色 table-hover
+        -->
+        <!--margin:0px auto    就是元素居中-->
+        <div class="table-responsive">
+	        <table class=" table table-striped table-bordered table-hover " style="width: 90%; margin: 0px auto;">
+	        	<caption>普通表格</caption>
+	        	<tr>
+	        		<th>编号</th>
+	        		<th>姓名</th>
+	        		<th>年龄</th>
+	        	</tr>
+	        	<tr class="danger">
+	        		<td>001</td>
+	        		<td>王大</td>
+	        		<td>22</td>
+	        	</tr>
+	        	<tr class="success">
+	        		<td>002</td>
+	        		<td>王二</td>
+	        		<td>23</td>
+	        	</tr>
+	        	<tr class="warning">
+	        		<td>003</td>
+	        		<td>王三</td>
+	        		<td>24</td>
+	        	</tr>
+	        	<tr class="sr-only">
+	        		<td>004</td>
+	        		<td>隐藏</td>
+	        		<td>25</td>
+	        	</tr>
+	        	<tr class="bg-primary">
+	        		<td>005</td>
+	        		<td>王五</td>
+	        		<td>26</td>
+	        	</tr>
+	        </table>
+      </div>  
+        
+        
+        
+        
+        
+        <hr />
+        <h2>表单元素</h2>
+        <form style="margin-left: 30px;" >
+        	<label for="forName">姓名:</label><input id="forName" type="text" placeholder="请输入姓名"/><br />
+        	<label for="forPwd">密码:</label><input id="forPwd" type="text" placeholder="请输入密码"/><br />
+        	站内用户<input type="checkbox" />站外用户<input type="checkbox" />游客<input type="checkbox" /><br />
+        	<input  type="radio"/>记住密码<br />
+        	<input type="button" name="" id="" value="登录" />
+        </form>
+        
+        <form style="margin-left: 30px; width: 214px; height: 210px;"class="form-inline  form-control">
+        	<label for="forName">姓名:</label><input id="forName" type="text" placeholder="请输入姓名" class="form-control"/><br />
+        	<label for="forPwd">密码:</label><input id="forPwd" type="text" placeholder="请输入密码" class="form-control"/><br />
+        	站内用户<input type="checkbox" />站外用户<input type="checkbox" />游客<input type="checkbox" /><br />
+        	<input  type="radio"/>记住密码<br />
+        	<input type="button"value="登录" class="btn " style="width: 190px;"/>
+        </form>
+        
+        
+        
+        
+       <hr /> 
+       <!--最重要的两个样式是  form-horizontal和form-group   剩下的  布局怎么写，就怎么写-->
+        <!--<form style="height:250px;" class="form-horizontal" role="form"> 
+        	<div class="form-group">
+        		<div class="col-md-2">
+	        		<label for="forName">姓名:</label>
+	        	</div>
+	        	<div class="col-md-8">
+	        		<input id="forName" type="text" placeholder="请输入姓名" class="form-control"/>
+	        	</div>
+        	</div>
+        	<div class="form-group">
+        		<div class="col-md-2">
+        			<label for="forPwd">密码:</label>
+        		</div>
+	        	<div class="col-md-8">
+	        	  	<input id="forPwd" type="text" placeholder="请输入密码" class="form-control"/>
+	        	</div>
+        	</div>
+        	<div class="form-group">
+        	站内用户<input type="checkbox" />
+        	站外用户<input type="checkbox" />
+        	游客<input type="checkbox" />
+        	</div>
+        	<div class="form-group">
+        	<input  type="radio"/>记住密码
+        	</div>
+        	<div class="form-group">
+        	<input type="button"  value="登录" />
+        	</div>
+        </form>-->
+        
+        
+        
+        
+        
+        
+        <hr />
+        <h2>图片元素</h2>
+        <img src="img/java.jpg"  style="width: 100px;height: 100px;margin-left: 20px;"
+        	class="img-circle"/>
+        	<img src="img/java.jpg"  style="width: 400px;height: 400px;margin-left: 20px;"
+        	class="img-responsive"/><!--相应式的图片-->
+        	<img src="img/java.jpg"  style="width: 100px;height: 100px;margin-left: 20px;"
+        	class="img-rounded"/>
+        	<img src="img/java.jpg"  style="width: 100px;height: 100px;margin-left: 20px;"
+        	class="img-thumbnail"/>
+        	
+        
+        
+        
+        
+        
+        <hr />
+        <h2>按钮元素</h2>
+        <!-- 按钮的样式都是以“btn-”为前缀的-->
+        <input  type="button" value="普通按钮" />
+        <input class="btn" type="button" value="文艺按钮" />
+        <button type="button">一个按钮</button>
+        <button type="button">一个<br />按钮</button>
+        <button type="button">一个按钮<input type="text"></button>
+        <button >一个按钮<input type="text"></button>
+        <input type="button" value="另一个按钮" class="btn btn-warning"/>
+        <input type="button" value="另一个按钮" class="btn btn-warning disabled"/>
+        <br />
+        <input type="button" value="另一个按钮" class="btn btn-link"
+        	onclick="window.location='https://www.zhihu.com'"/>
+        <!-- input 不能实现button的区域能力，中间放不下任何东西-->
+        
+        
+        
+        
+        <hr />
+        <h2>代码元素</h2>
+        <code>var a=0;</code><!--bootstrap自带的更改-->
+        <pre>var a=0;</pre>
+         <pre class="pre-scrollable">
+         	<code>var a=0;</code><br/>
+         	<code>var a=0;</code><br/>
+         	<code>var a=0;</code><br/>
+         	<code>var a=0;</code><br/>
+         	<code>var a=0;</code><br/>
+         	<code>var a=0;</code><br/>
+         	<code>var a=0;</code><br/>
+         	<code>var a=0;</code><br/>
+         	<code>var a=0;</code><br/>	
+         	<code>var a=0;</code><br/>
+         	<code>var a=0;</code>
+         </pre>
+        
+        
+        
+        
+        
+        <h2>列表元素</h2>
+        	<p>列表元素的内容都是以“list-”为前缀的</p>
+        	<ul class="list-group-item-success list-unstyled list-inline">
+        		<li>苹果</li>
+        		<li>苹果</li>
+        		<li>苹果</li>
+        		<li>苹果</li>
+        		<li>苹果</li>
+        		<li>苹果</li>
+        		<li>苹果</li>
+        		
+        	</ul>
+        <p>	名词解释样式 </p>
+        <dl class="dl-horizontal">
+        	<dt>苹果</dt>
+        	<dd>一种能吃的水果一种能吃的水果一种能吃的水果一种能吃的水果一种能吃的水果一种能吃的水果一种能吃的水果一种能吃的水果一种能吃的水果</dd>
+        	<dt>香蕉</dt>
+        	<dd>一种能吃的水果</dd>
+        </dl>
+        
+        
+        
+        
+        
+        
+        <hr />
+        <h2>行内元素</h2>
+       <!--类似于一个文字环绕的效果-->
+        <blockquote class="pull-left"><img src="img/timg.jpg" style="width: 200px;height: 150px;"/></blockquote>
+        <br />
+        <span class="glyphicon glyphicon-phone-alt">电话:123456789</span>
+        <br />
+        <abbr title="不明白怎么回事，但是感觉很厉害" class="initialism">不明觉厉</abbr>
+        
+        
+        <p>关于文字的bootstrap均以“text”为前缀</p>
+        <p class="text-warning">1313123</p>
+        <p class="text-center">这是一个段落文字</p>
+        <p class="text-right">这是一个段落文字</p>
+        <p class="text-center">这是一个段落文字</p>
+        <p class="lead">这是一个突出显示的段落文字</p>
+        <p class="text-capitalize">This is a class about English word</p>
+        <p class="text-lowercase">This is a class about English word</p>
+        <p class="text-uppercase">This is a class about English word</p>
+        
+        <del>删除线</del>
+        <s>删除线</s>
+        <ins>下划线</ins>
+        <u>下划线</u>
+        <small>小一点的文字</small>
+        <strong>加粗的文字</strong>
+        <b>加粗的文字</b>
+        <em>倾斜的文字</em>
+        <i>倾斜的文字</i>
+        
+        <hr />
+        <h2>bootstrap的标题样式</h2>
+        <span class="h6">这是一个标题</span>
+        <span class="h5">这是一个标题</span>
+        <span class="h4">这是一个标题</span>
+        <span class="h3">这是一个标题</span>
+        <span class="h2">这是一个标题</span>
+        <span class="h1">这是一个标题</span>
+        <h6>这是一个标题</h6>
+        <h5>这是一个标题</h5>
+        <h4>这是一个标题</h4>
+        <h3>这是一个标题</h3>
+        <h2>这是一个标题</h2>
+        <h1>这是一个标题</h1>
+        
+        <script>
+		$(document).ready(function(){
+			
+		});
+	</script>
+	</body>
+</html>

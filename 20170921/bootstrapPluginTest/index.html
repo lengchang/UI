@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<script type="text/javascript" src="lib/jquery-3.2.1.min.js" ></script>
+		<script type="text/javascript" src="lib/bootstrap-3.3.7/dist/js/bootstrap.min.js" ></script>
+		<link rel="stylesheet" href="lib/bootstrap-3.3.7/dist/css/bootstrap.min.css" />
+		<title>Bootstrap组件练习</title>
+	</head>
+	<body>
+		<style>
+			#listGroupContainer{width: 40%;}
+		</style>
+		<h3>bootstrap列表组 :list-group</h3>
+		<div id="listGroupContainer" class="container">
+			<div id="myListGroup" class="list-group">
+				<div class="list-group-item">
+					同事<span class="badge">50</span>
+				</div>
+				<div class="list-group-item">
+					同学<span class="badge">99</span>
+				</div>
+				<div class="list-group-item">
+					领导<span class="badge">3</span>
+				</div>
+				<div class="list-group-item">
+					父母<span class="badge">5</span>
+				</div>
+				<div class="list-group-item ">
+					老师<span class="badge">1</span>
+				</div>
+			</div>
+		</div>
+		
+		<script>
+			$(document).ready(function(){
+				console.log($("#myListGroup div:odd"));
+				$("#myListGroup div:odd").attr("class","list-group-item list-group-item-warning");
+				$("#myListGroup div:even").attr("class","list-group-item list-group-item-danger");
+			});
+		</script>
+		
+		
+		
+		
+		<hr />
+		<style>
+			.marginTop{margin-top: 10px;}
+			
+		</style>
+		<h3>bootstrap进度条 :progressbar</h3>
+		
+		<div class="container">
+			<div class="progress">
+				<div class="progress-bar progress-bar-info" style="width: 40%;">40%</div>
+			</div>
+			<div class="progress">
+				<div class="progress-bar progress-bar-info" style="width: 100%;">100%</div>
+			</div>
+		</div>
+		
+		
+		
+		
+		
+		<hr />
+		<h3>bootstrap警告框 :alert</h3>
+		<div class="container">
+			<div id="alertDialog" class="alert alert-warning">
+				您的浏览器版本过低，请更换或者升级您的浏览器
+				<button id="closeAlert" type="button" class="close">
+					<span>X</span>
+				</button>
+			</div>
+		</div>
+		<script>
+			$(document).ready(function(){
+				$("#closeAlert").click(function(){
+					$("#alertDialog").remove();
+				});
+			});
+		</script>
+		
+		
+		
+		
+		
+		<hr />
+		<h3>bootstrap徽章和巨幕：panel</h3>
+		<div class="container">
+			<div class="jumbotron">
+				<div class="container text-center">
+					<h2>天津师范大学</h2>
+					<p>软件工程专业</p>
+					<p><input type="button" class="btn btn-info btn-lg"  value="查看细节" />  </p>
+					<p class="text-right">
+						<button type="button" class="btn btn-success">新消息<span class="badge">1</span> </button>
+						
+					</p>
+				</div>
+			</div>
+		</div>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<hr />
+		<h3>bootstrap面板:panel</h3>
+		<div class="container">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					风暴英雄
+				</div>
+				<div class="panel-body">
+					<!--下面内容与面板无关，仅为演示好看-->
+					<div class="container-fluid marginTop text-center">
+						<div class="btn-group ">
+							<input type="button" class="btn btn-info width70" value="姓名" />
+							<input type="text" class="btn btn-default " placeholder="请在这里输入姓名" />
+						</div><br />
+						<div class="btn-group">
+							<input type="button" class="btn btn-info width70" value="密码" />
+							<input type="text" class="btn btn-default" placeholder="请在这里输入密码" />
+						</div>
+					</div>
+					<div id="" class="container marginTop text-center">
+						<div class="btn-group">
+							<input type="button" class="btn btn-success" value="登录" />
+							<input type="button" class="btn btn-danger" value="取消" />
+						</div>
+					</div>
+				</div >
+				<div class="panel-footer">
+					www.lukeweiduo.com
+				</div>
+			</div>
+		</div>
+		
+		
+		
+		
+		
+		
+		<hr />
+		<h3>bootstrap输入组:input-group</h3>
+		<style>
+			.marginTop{margin-top: 10px;}
+			.width70{width: 70px;}
+			.normalCursor{cursor: default;}
+		</style>
+		<div class="container-fluid marginTop ">
+			<div class="input-group ">
+				<span class="input-group-addon width70 normalCursor" >用户名 :</span>
+				<input type="text" class="btn btn-default " placeholder="请在这里输入姓名" />
+			</div>
+			<div class="input-group">
+				<span class="input-group-addon width70 normalCursor">密码 :</span>
+				<input type="text" class="btn btn-default" placeholder="请在这里输入密码" />
+			</div>
+			<div class="input-group marginTop">
+				<input type="button" class="btn btn-success" value="登录" />
+				<input type="button" class="btn btn-danger" value="取消" />
+			</div>
+		</div>
+		
+		
+		
+		
+		
+		
+		
+		<hr />
+		<style>
+			.marginTop{margin-top: 10px;}
+			.width70{width: 70px;}
+		</style>
+		<h3>bootstrap按钮组：btn-group</h3>
+		<!--<div class="container" id="">
+			<div class="btn-group">
+				<input type="button" class="btn btn-success" value="尚可" />
+				<input type="button" class="btn btn-warning" value="或可" />
+				<input type="button" class="btn btn-danger" value="无可" />
+			</div>
+		</div>-->
+		<div class="container-fluid marginTop text-center">
+			<div class="btn-group ">
+				<input type="button" class="btn btn-info width70" value="姓名" />
+				<input type="text" class="btn btn-default " placeholder="请在这里输入姓名" />
+			</div><br />
+			<div class="btn-group">
+				<input type="button" class="btn btn-info width70" value="密码" />
+				<input type="text" class="btn btn-default" placeholder="请在这里输入密码" />
+			</div>
+		</div>
+		<div id="" class="container marginTop text-center">
+			<div class="btn-group">
+				<input type="button" class="btn btn-success" value="登录" />
+				<input type="button" class="btn btn-danger" value="取消" />
+			</div>
+		</div>
+		
+		
+		
+		
+		
+		
+		<hr />
+		<style>
+			#chooseLangUl li{cursor: pointer;}
+			#chooseLangUl li:hover{background-color: #FFFFFF;color: #2AABD2;}
+			.marginRight5{margin-right: 5px;}
+			#chooseLangBtn{width: 120px;}
+		</style>
+		<h2>bootstrap 下拉菜单：dropdown</h2>
+		<div id="" class="container">
+			<div id="" class="dropdown">
+				<button id="chooseLangBtn" class="btn btn-info" type="button" data-toggle="dropdown">
+					<span id="language" class="marginRight5">请选择语言</span><span class="caret"></span>
+				</button>
+				<ul id="chooseLangUl" class="dropdown-menu" >
+					<li>请选择语言</li>
+					<li>中文繁体</li>
+					<li>英式英语</li>
+					<li>美式英语</li>
+					<li>法语</li>
+					<li>日语</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+	<script>
+		$(document).ready(function(){
+			$("#chooseLangUl li").click(function(){
+				var dropDownVal=$(this).text();
+				$("#language").text(dropDownVal);
+			});
+		});
+	
+	</script>
+</html>

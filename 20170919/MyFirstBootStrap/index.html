@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0" /><!--为了兼容各种型号的设备屏幕和页面缩放比例
+			initial-scale是页面的默认缩放比例-->
+		<title>我的第一个Bootstrap</title>
+		<link rel="stylesheet" href="lib/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+		<script type="text/javascript" src="lib/jquery-3.2.1.min.js" ></script>
+		<script type="text/javascript" src="lib/bootstrap-3.3.7-dist/js/bootstrap.min.js" ></script>
+		<!--以上是bootstrap的默认配置-->
+	</head>
+	<body>
+		<h1>Hello Bootstrap's World</h1>
+		<!--bootstrap会对出现的标签自动美化，或者说对其中的一部分-->
+		<!--bootstrap  1.对手机等移动设备的强力支持和美化让他成为了  前端世界的赢家
+			           2.对浏览器的兼容也做的很好
+			           3.容易上手，学起来比较容易，半年精通，对企业来说性价比高
+			           4.有很多的封装良好的组件
+			           5.独特的布局体系:栅格化布局。一行最多十二列。
+		-->
+		<style>
+			.row div{}
+			#blue{background-color: blue;color: #FFFFFF;}
+			.container{width: 60%;border: solid 1px #000000;}
+		</style>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6">123</div>
+				<div class="col-md-6">234</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">123</div>
+				<div class="col-md-4">123</div>
+				<div class="col-md-4">123</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3">135</div>
+				<div class="col-md-9">135</div>
+			</div>
+			<div class="row">
+				<div id="blue" class="col-md-3">
+					<div class="row">
+						<div class="col-md-4">123</div>
+						<div class="col-md-4">123</div>
+						<div class="col-md-4">123</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4">123</div>
+						<div class="col-md-4">123</div>
+						<div class="col-md-4">123</div>
+					</div>
+				</div>
+				<div class="col-md-9">456</div>
+			</div>
+				<div class="row">
+					<div class="col-md-3">123</div>
+					<div class="col-md-5 col-md-offset-1">123</div>
+				</div>
+		</div>
+		<!--
+			1.Boootstrap一行上的列数如果超过12，会换行，不满十二时会空空位
+			2.列偏移如何使用？  列偏移的列数有什么要求？列偏移要求使用class="col-*-offset-*",列偏移要求 列数和偏移数相加小于12
+			3.Bootstrap的栅格化布局是如何进行的？
+			<div class="container">
+			<div class="row">
+				<div class="col-md-6">123</div>
+				<div class="col-md-6">234</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">123</div>
+				<div class="col-md-4">123</div>
+				<div class="col-md-4">123</div>
+			</div>
+			</div>
+			4.Bootstrap的栅格化布局共有几种模式？如何做到兼容他们
+			四种：超小型【col-xs-*】 小型【col-sm-*】 中型【col-md-*】 大型【col-lg-*】
+			想做到兼容的话，可以同时将这四种class都定义上，bootstrap可以根据当前的浏览器屏幕大小自动选择
+			
+		-->
+		<hr />
+		<img src="img/sp.png" />
+	</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<!--angularJs是一门独立的语言，不需要引入JQuery,实际上是基于js-->
+		<title>我的第一个AngularJs</title>
+		<script src="lib/jquery-3.2.1.min.js"></script>
+		<script src="lib/angular-1.6.6/angular.min.js"></script>
+	</head>
+	<body ng-app="myApp" >
+		<!--  ng- 是angularJs的特有的调用方式 -->
+		<!--  ng-app代表这个元素及其所有子元素和内容都归angularJs管理-->
+		<div ng-controller="myFirstController">
+			{{welcome.title}}<br />
+			{{welcome.content}}<br />
+			<input type="button" value="{{welcome.content}}" />
+			<input type="text" ng-model="welcome.content"  />
+			<!--angularJs自己的属性书写的时候，不需要加两层大括号，而其他的地方需要加-->
+		</div>
+		
+		<script>
+			var myAppModule=angular.module("myApp",[]);//myApp的控制者
+			myAppModule.controller("myFirstController",function($scope){//$scope里面保存的是 myFirstController 控制器所管辖的模型
+				$scope.welcome={
+					title:"Greeting",
+					content:"Hello AngularJs"
+				}
+			});//控制者建立控制器
+			//myApp  :网页级别
+			//controller：模块级别
+            //$scope : 模型级别
+            //scope放入controller,controller放入Module，Module依赖于myApp,scope可以自己定义，具体化功能
+            //然后在html元素中，用   ng-xxxxxx=  对应,用{{ xxxxxx }}来调用。
+		</script>
+		 
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<hr />
+		AngularJs的优点：<br />
+		一.MVC编程思想<br />
+		M：模型(model) 一些对象的变量<br />
+		V: 视图(view) 可以与用户交互的，一个展现的东西，不是前端，而是前端对应的功能，接口。<br />
+		C: 控制(control) 一般来讲，controller都会调用一个服务来做具体的 事务。<br />
+		
+		二.IOC(控制反转)/DI(依赖注入)<br />
+		inverse of control<br />
+		dependency injection<br />
+		
+		AngularJs的缺点：<br />
+		一.不安全(前端的每一次判断，都必须在后端再做一次判断，简单说，前端是防君子不防小人的一把锁)<br />
+		用js写的，可以直接通过网页源代码来看到<br />
+		二.依赖于js,如果禁用了js,就会失效<br />
+		
+	
+	
+	
+	
+	</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		JAVAScript是一种解释性语言,也是一种脚本
+		<script>
+			var num=0;
+			var str="6";
+			var arr=[1,2,3];
+			var bol=true;
+			var obj={id:"1",name:"里狗蛋"};
+			console.log(bol+"1");
+			console.log(str*"5");
+			console.log(str*obj);
+			//减号，乘号，除号，优先按照数字去计算
+			//+号的两个操作数，如果有一个是字符串，就会将另一个转成字符串，然后再相加。
+			if(NaN==NaN)
+			{
+				console.log("NaN==Nan");
+			}else
+			{
+				console.log("NaN!=NaN");
+			}
+			//其他所有类型转换为数字类型，先执行valueof()函数，如果不能执行，就先通过toString()方式转化成字符串，再转化为数字，如果实在不行，
+			//就转化为NaN，其实就是非数。
+			//所有对象转化为布尔值的时候，只有六种情况转化为false：0，-0，null,undefined,"",false
+			var a ="false";
+			if(a)
+			{
+				console.log("字符串false转化为布尔值为true");	
+			}else
+			{
+				console.log("字符串false转化为布尔值为false");	
+			}
+			console.log(arr[0]);
+			//console.log(arr[3])的输出结果是  undefined
+			// null  NaN  undefined;
+			//null最常用 ，一般是由程序员主动赋值。
+			//undefined 未定义，可以看做是系统级的错误，能赋值null的地方一定要赋值
+			//null可以理解为对象是空的，二undefined是根本没有对象
+			//NaN主要是强调一个对象在转化时出了错
+			var myNum=null;
+			console.log(myNum);//null
+			var myNumT;
+			console.log(myNumT);//undifined
+			Number.NaN;
+			console.log(Number.NaN);
+			Number.Infinity;//无限大
+			console.log(Number.Infinity);
+			-Number.Infinity;//无限小
+			console.log(0/0);//NaN
+			console.log(0/0.0);//NaN【0.0】【0.】【.0】都是浮点数的0
+			console.log(3/0);//Infinity
+			console.log(-3/0);//-Infinity
+			console.log(1/0.3);
+			
+//			var vehicle ={id:"1",name:"小汽车",brand:{id:"1",name:"甲壳虫"}};
+//			console.log("车辆编号"+vehicle.id+",车辆名称"+vehicle.name+"，车辆品牌"+vehicle.brand.name);
+//			var vehicleT =[{id:"1",name:"小汽车",brand:{id:"1",name:"甲壳虫"}}];
+//			var vehicleTO=vehicleT[0];
+//			console.log("车辆编号"+vehicleTO.id+",车辆名称"+vehicleTO.name+"，车辆品牌"+vehicleTO.brand.name);
+//			
+			
+			var vehicle ={id:"1",name:"小汽车",brand:{id:"1",name:"甲壳虫"},getIntroduce:function(vehicle){
+				console.log("vehicle");
+			}};
+			vehicle.getIntroduce(vehicle);
+			
+			//原型链：原型-->实例
+			var myObj=new Object();
+			console.log(myObj.__proto__.valueOf);
+			var myStr="123.1415926535897932";
+			console.log(myStr.__proto__);
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>
