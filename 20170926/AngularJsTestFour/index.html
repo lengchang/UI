@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>AngularJs 的 循环 学习</title>
+		<script src="lib/angular-1.6.6/angular.min.js"></script>
+		<script src="lib/jquery-3.2.1.min.js"></script>
+		<link />
+	</head>
+	<body>
+		<div ng-app="myApp" ng-controller="MyController" id="">
+			<div >
+				<div ng-repeat="arr in nums">
+					<span ng-repeat="num in arr">
+						{{num}}&nbsp;
+					</span>
+				</div>
+				<!--angularJs的循环，写法就是这个样子，将nums中的循环的放入arr,类似于foreach
+					然后在一次的遍历
+				-->
+			</div>
+		</div>
+		<script>
+			var myMoudle=angular.module("myApp",[]);
+			myMoudle.controller("MyController",function($scope){
+				$scope.nums=[
+					[1, 2, 3],
+					[11, 12, 13],
+					[101, 102, 103],
+				];
+			});
+		</script>
+	</body>
+</html>

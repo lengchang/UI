@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>AngularJs练习</title>
+		<script src="lib/angular-1.6.6/angular.min.js"></script>
+	</head>
+		<!--从前到后：视图层>>控制层>>模型层-->
+		<!--AngularJs 的指令 就是 元素的属性  ng-为开头  =""为具体值         -->
+	<body ng-app="myApp"><!--由angularJs 控制-->
+		
+		
+		<h3></h3>
+		<hr />
+		
+		
+		<h3></h3>
+		<hr />
+		
+		
+		
+		
+		
+		<div div ng-controller="changeTextController">
+		<h3>ng-switch指令</h3>
+		<select ng-model="vehicleName" ><!--实现互动关联-->
+			<option value="1">1汽车</option>
+			<option value="2">2汽车</option>
+			<option value="3">3汽车</option>
+			<option value="4">4汽车</option>
+		</select>
+		<div ng-switch="vehicleName">
+			<span ng-switch-when="1">您选择了{{vehicle[0].name}}</span>
+			<span ng-switch-when="2">您选择了{{vehicle[1].name}}</span>
+			<span ng-switch-when="3">您选择了{{vehicle[2].name}}</span>
+			<span ng-switch-when="4">您选择了{{vehicle[3].name}}</span>
+			<span ng-switch-default="0">您没选择任何内容</span>
+		</div>
+		<hr />
+		</div>
+		
+		
+		<h3>ng-if指令</h3>
+		<div id="oneContent" ng-if="1">一部分内容</div>
+		<div id="otherContent" ng-if="1!=1">另一部分内容</div>
+		<input  id="changeStatus" value="改变部分内容的现实" type="button" />
+		<hr />
+		
+		
+		
+		
+		<h3>ng-change指令</h3>
+		<span>ng-change指令需要同ng-model指令同时使用</span>
+		<div ng-controller="changeTextController">
+			<input type="text" ng-model="value" ng-change="onTextChange();" />
+			<!--必须和ng-model配合使用-->
+		</div>
+		<hr />
+		
+		<h3>ng-show/hide指令</h3>
+		<div ng-show="true">显示的div</div>
+		<div ng-hide="true">隐藏的div</div>
+		<div ng-hide="false">隐藏的div</div>
+		<hr />
+		
+		<h3>ng-selected指令</h3>
+		<input type="checkbox" ng-model="sel3" />
+		<select>
+			<option ng-selected="sel1">第一个选项</option>
+			<option ng-selected="sel2">第二个选项</option>
+			<option ng-selected="sel3">第三个选项</option>
+		</select>
+		<hr />
+		
+		
+		<h3>ng-checked指令</h3>
+		<input type="checkbox" ng-checked="1==5" value="12345678/*" />
+		<input type="checkbox" ng-checked="1==1" value="12345678/*" />
+		<hr />
+		
+		
+		
+		<h3>ng-disabled指令  ng-readonly指令</h3>
+		<input type="text" ng-disabled="1!==5" value="123456789"/>
+		<input type="text" ng-readonly="1!==5" value="123456789"/>
+		<hr />
+		
+		
+		
+		<h3>ng-init指令</h3>
+		<div ng-init="car={id:1,name:'大汽车'}">
+			{{car.name}}
+		</div>
+		
+		
+		<hr />
+		<h3>作用域问题</h3>
+		<div id=""><!--视图层-->
+			<div ng-controller="myFirstController"><!--由控制层控制-->
+				{{"8"*"1"}}<!--放入的是 angularJs表达式-->
+				{{vehicle.name}}
+				{{vehicle.a[1]}}
+				<input type="text" ng-model="vehicle.name" /><!--控件绑定模型-->
+				<input type="text" ng-model="vehicle.name" /><!--实现了数据绑定，将元素/控件 与 数据/属性产生依赖-->
+			</div>
+			<div ng-controller="myFirstController"><!--由控制层控制-->
+				{{vehicle.a[1]}}{{vehicle1.a1[1]}}
+				<input type="text" ng-model="vehicle.name" /><!--控件绑定模型-->
+				<input type="text" ng-model="vehicle.name" /><!--实现了数据绑定，将元素/控件 与 数据/属性产生依赖-->
+				<div ng-controller="mySecondController"><!--由控制层控制-->
+				{{vehicle.a[1]}}{{vehicle1.a1[1]}}
+				<input type="text" ng-model="vehicle1.name1" /><!--控件绑定模型-->
+				<input type="text" ng-model="vehicle1.name1" /><!--实现了数据绑定，将元素/控件 与 数据/属性产生依赖-->
+			</div>
+			</div>
+			<div ng-controller="mySecondController"><!--由控制层控制-->
+				{{vehicle1.a1[1]}}
+				<input type="text" ng-model="vehicle1.name1" /><!--控件绑定模型-->
+				<input type="text" ng-model="vehicle1.name1" /><!--实现了数据绑定，将元素/控件 与 数据/属性产生依赖-->
+			</div>
+		</div>
+		<script>
+			var myModule=angular.module("myApp",[]);//获取angular组件
+			myModule.controller("myFirstController",function($scope){//控制层
+				//range可以测量的，scope是不可以测量的
+				$scope.vehicle={//模型层
+					id:"1",
+					name:"小汽车",
+					level:"SSSSSS",
+					a:["第一","第二","第三",4,5],//js不要求数组的多个对象的类型一致
+				}
+			});
+			myModule.controller("mySecondController",function($scope){//控制层
+				//range可以测量的，scope是不可以测量的
+				$scope.vehicle1={//模型层
+					id1:"11",
+					name1:"小汽车1",
+					level1:"SSSSSS1",
+					a1:["第一1","第二1","第三1",41,51],//js不要求数组的多个对象的类型一致
+				}
+			});
+			myModule.controller("changeTextController",function($scope){//控制层
+				$scope.vehicle=[
+				{id:"1",name:"1汽车",level:"SSSSSS"},
+				{id:"2",name:"2汽车",level:"SSSSSS"},
+				{id:"3",name:"3汽车",level:"SSSSSS"},
+			    {id:"4",name:"4汽车",level:"SSSSSS"},
+			    {id:"5",name:"5汽车",level:"SSSSSS"},
+				];
+				$scope.value="文本框的内容";
+				$scope.onTextChange=function(){
+					alert("文本框的内容改变了");
+				}
+			});
+		</script>
+		
+	</body>
+</html>

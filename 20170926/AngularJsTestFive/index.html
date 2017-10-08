@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>AngularJs 学习</title>
+		<script src="lib/jquery-3.2.1.min.js"></script>
+		<script src="lib/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="lib/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+		<script src="lib/angular-1.6.6/angular.min.js"></script>
+	</head>
+	<body ng-app="myApp" ng-controller="MyController" id="">
+		<input type="button" value="点我" ng-click="btnAction.onMyButtonClicked()" />
+		<br />
+		<style>
+			.blue{background-color: #A6E1EC;}
+			.red{background-color: #FA787E;}
+		</style>
+		<a ng-href="{{linkAddress}}">AngularJs链接</a>
+		<div>
+			<table class="table table-bordered">
+				<caption>使用ng-class指令控制元素的样式</caption>
+				<tr  ng-repeat="arr in nums" ng-class="{red:$index%2==0,blue:$index%2==1}"><!-- ng-class 值的固定格式：[className:boolean]-->
+					<td>{{arr[0]}}</td>
+					<td>{{arr[1]}}</td>
+					<td>{{arr[2]}}</td>
+				</tr>
+				</table>	
+			<table class="table table-bordered">	
+				<caption>使用ng-style指令控制元素的样式</caption>
+				<tr  ng-repeat="arr in nums"  ng-style=""><!-- ng-class 值的固定格式：[className:boolean]-->
+					<td>{{arr[0]}}</td>
+					<td>{{arr[1]}}</td>
+					<td ng-style="myStyle.import">{{arr[2]}}</td>
+				</tr>
+			</table>	
+		</div>
+		<script>
+			var myMoudle=angular.module("myApp",[]);
+			myMoudle.controller("MyController",function($scope){
+				$scope.nums=[
+					[1, 2, 3],
+					[11, 12, 13],
+					[101, 102, 103],
+					[1001, 1002, 1003],
+					[10001, 10002, 10003],
+
+				];
+				$scope.linkAddress="http://zhihu.com";
+				$scope.myStyle={};
+				$scope.myStyle.import={"color": "#FA787E","font-weight":true};
+				$scope.myStyle.blue={"color": "#A6E1EC"};
+				$scope.btnAction={};
+				$scope.btnAction.onMyButtonClicked=function(){
+					alert("点击了按钮");
+				};
+				//图片路径属性:ng-src
+				
+				
+				
+			});
+		</script>
+	</body>
+</html>

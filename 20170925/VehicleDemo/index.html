@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>车辆小例子</title>
+		<script src="lib/jquery-3.2.1.min.js"></script>
+		<script src="lib/angular-1.6.6/angular.min.js"></script>
+		<script src="lib/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="lib/bootstrap-3.3.7/dist/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="css/index.css" />
+		<script type="text/javascript" src="js/index.js" ></script>
+	</head>
+	<body ng-app="VehicleApp">
+		<!--结合angularJs,Bootstrap 制作出一个简单的车辆信息管理的表格-->
+		<!--CSS 的优先级问题 行内样式>内联样式>外联样式-->
+		<!--CSS 的优先级问题 id样式>class样式-->
+		<form class="form-inline" ng-controller="VehicleController">
+			<div id="mainContainer"class="container-fluid">
+				<div  class="row">
+					<div class="col-md-2"></div>
+					<div id="mainContent" class="col-md-8">
+						<div id="queryRow" class="row">
+							<div class="col-md-5">
+								车辆编号:<input type="text" class="form-control" id="id_code" name="code"/>
+							</div>
+							<div class="col-md-5">
+								车辆名称:<input type="text" class="form-control" id="id_name" name="name"/>
+							</div>
+							<div class="col-md-2">
+								<input type="button" value="查询" class="btn btn-info" ng-click="refresh()"/>
+							</div>
+						</div>
+						<div id="dataRow" class="row">
+							<table id="dataTable"  class="col-md-12 table table-responsive table-bordered table-striped table-hover">
+								<caption class="text-center text-info">车辆信息</caption>
+								<tr>
+									<th>编号</th>
+									<th>名称</th>
+									<th>等级</th>
+									<th>数量</th>
+								</tr>
+								<tr ng-repeat="item in mainData">
+									<td>{{item.code}}</td>
+									<td>{{item.name}}</td>
+									<td>{{item.level}}</td>
+									<td>{{item.amount}}</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</body>
+</html>
